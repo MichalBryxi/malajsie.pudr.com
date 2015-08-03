@@ -1,15 +1,13 @@
-{{#if isEditting}}
-  {{input placeholder="Title" value=section.title}}
-  {{input placeholder="Body" value=section.body}}
-  {{input placeholder="Order" value=section.order}}
-  {{input placeholder="Latitude" value=section.lat}}
-  {{input placeholder="Longitude" value=section.long}}
-  {{input placeholder="Zoom" value=section.zoom}}
+<h2>#{{section.order}} {{section.title}}</h2>
+
+{{#if isCurrent}}
+  <div class="well">
+    <p>
+      {{markdown-to-html markdown=section.body}}
+    </p>
+
+    {{#link-to 'sections.edit' section.id class="btn btn-link"}}
+      Edit
+    {{/link-to}}
+  </div>
 {{/if}}
-
-<h2>{{section.title}}</h2>
-<p>
-  {{markdown-to-html markdown=section.body}}
-</p>
-
-<button class="btn btn-default" {{action "edit"}}>Edit</button>

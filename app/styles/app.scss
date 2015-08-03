@@ -14,9 +14,13 @@
   width: 100%;
 }
 
-.container {
+.content {
   z-index: 100;
   position: relative;
+  background-color: rgba(255, 255, 255, .6);
+  border: solid #aaa;
+  border-width: 0 1px;
+  box-shadow: .1em .1em 5em 1em rgba(0, 0, 0, .2);
 }
 
 .google-map {

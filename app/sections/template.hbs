@@ -1,12 +1,17 @@
-<!--<div class="container">
-  <button {{action "createSection"}} class="btn btn-success">Create</button>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 content">
 
-  {{#each content as |section|}}
-    {{x-section section=section currentSection=currentSection action="moveMap"}}
-  {{/each}}
+      {{#each content as |section|}}
+        {{x-section section=section currentSection=currentSection action="moveMap"}}
+      {{/each}}
 
-  -- {{currentSection.lat}} --
-</div>-->
+      <button {{action "createSection"}} class="btn btn-success">Create</button>
+    </div>
+
+    {{outlet}}
+  </div>
+</div>
 
 <div id="map-container">
   {{google-map
@@ -14,7 +19,7 @@
     lng=currentSection.long
     zoom=currentSection.zoom
     gopt_mapTypeControl=false
-    gopt_styles=styles
+    gopt_style=styles
     gopt_zoomControl=false
     gopt_backgroundColor='transparent'}}
 </div>
