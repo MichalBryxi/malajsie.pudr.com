@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('sections');
+  this.route('section', {path: '/section/:id'});
 });
 
 export default Router;

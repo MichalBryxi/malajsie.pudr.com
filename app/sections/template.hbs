@@ -1,8 +1,20 @@
-<h2>New Section</h2>
-{{input value=heap.title}}
-{{input value=heap.body}}
-{{input value=heap.order}}
-{{input value=heap.lat}}
-{{input value=heap.long}}
-<button {{action "createSection"}}>Create</button>
-{{outlet}}
+<!--<div class="container">
+  <button {{action "createSection"}} class="btn btn-success">Create</button>
+
+  {{#each content as |section|}}
+    {{x-section section=section currentSection=currentSection action="moveMap"}}
+  {{/each}}
+
+  -- {{currentSection.lat}} --
+</div>-->
+
+<div id="map-container">
+  {{google-map
+    lat=currentSection.lat
+    lng=currentSection.long
+    zoom=currentSection.zoom
+    gopt_mapTypeControl=false
+    gopt_styles=styles
+    gopt_zoomControl=false
+    gopt_backgroundColor='transparent'}}
+</div>
