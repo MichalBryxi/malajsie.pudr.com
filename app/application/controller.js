@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 
   contentSorted: function () {
     return this.get('content').sortBy('order');
-  }.property('content'),
+  }.property('content.@each'),
 
   heap: {
     title: "New section",
