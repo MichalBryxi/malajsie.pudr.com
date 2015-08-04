@@ -1,7 +1,28 @@
-<div class="container">
+<div class="container content">
   <div class="row">
     <div class="col-xs-12">
-      <h3>Zápisky z výletu do Malajsie</h3>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
+      <h1>Zápisky z výletu do Malajsie</h1>
+      <ul>
+        <li>Mezi daty <strong>17. prosince 2014</strong> a <strong>7. ledna 2015</strong> se vydala šestičlenná výprava z Čech prozkoumávat přírodu a kulturu Malajského státu.</li>
+        <li>Celkově mě výlet <abbr data-toggle="tooltip" title="letenka, nákup nezbytností doma, nákup dárků, doprava + ubytování + jídlo v cizině">se vším všudy</abbr> vyšel na <strong>50'000 Kč</strong>.</li>
+        <li>Přes počáteční obavy z neznámé exotické země proběhlo vše velmi hladce. Snaha okrást turistu je zde maximálně na úrovni nesmyslně vyšponovaných cen. Nikdy jsme neměli pocit, že by nám někdo chtěl nejak ublížit.</li>
+      </ul>
     </div>
   </div>
+</div>
+
+<div id="map-container">
+  {{google-map
+    lat=4
+    lng=108
+    zoom=6
+    gopt_mapTypeControl=false
+    gopt_style=styles
+    gopt_zoomControl=false
+    gopt_backgroundColor='transparent'}}
 </div>

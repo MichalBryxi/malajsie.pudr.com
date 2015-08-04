@@ -1,8 +1,21 @@
 @import "bootstrap";
-@import url('//fonts.googleapis.com/css?family=Amatic+SC:700|EB+Garamond&subset=latin,latin-ext');
+@import url('//fonts.googleapis.com/css?family=Amatic+SC:700|Libre+Baskerville:400,700&subset=latin,latin-ext');
+
+@mixin title() {
+  font-family: 'Amatic SC', cursive;
+}
+@mixin serif() {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1em;
+}
+
+@mixin front() {
+  z-index: 100;
+  position: relative;
+}
 
 h1, h2, h3, h4, .navbar-nav li {
-  font-family: 'Amatic SC', cursive;
+  @include title;
 }
 
 h1 {
@@ -19,11 +32,6 @@ h3 {
 h4 {
   font-size: 1.5em;
   color: #aaa;
-}
-
-.content {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.3em;
 }
 
 body { padding-top: 70px; }
@@ -43,8 +51,8 @@ body { padding-top: 70px; }
 }
 
 .content {
-  z-index: 100;
-  position: relative;
+  @include serif;
+  @include front;
   background-color: rgba(255, 255, 255, .7);
   border: solid 1px #aaa;
   box-shadow: .1em .1em 5em 1em rgba(0, 0, 0, .2);
