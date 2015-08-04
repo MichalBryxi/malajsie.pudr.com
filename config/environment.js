@@ -5,8 +5,10 @@ module.exports = function(environment) {
     modulePrefix: 'malajsie',
     environment: environment,
     contentSecurityPolicy: {
+      'default-src': "'self' *.googlesyndication.com",
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com maps.gstatic.com",
-      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com maps.gstatic.com *.googlesyndication.com",
+      'frame-src': "'self' *.doubleclick.net *.googlesyndication.com",
       'font-src': "'self' fonts.gstatic.com",
       'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
@@ -48,7 +50,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-43732567-11'
+    };
   }
 
   return ENV;
