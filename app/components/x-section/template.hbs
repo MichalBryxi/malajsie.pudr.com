@@ -1,7 +1,12 @@
-<h2>#{{section.order}} {{section.title}}</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{section.order}}. {{section.title}}
+    </h3>
+  </div>
 
 {{#if isCurrent}}
-  <div class="well">
+  <div class="panel-body">
     <p>
       {{markdown-to-html markdown=section.body}}
     </p>
@@ -11,3 +16,4 @@
     {{/link-to}}
   </div>
 {{/if}}
+</div>
