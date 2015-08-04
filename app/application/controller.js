@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  attrs: {},
+
   currentSection: {lat: 49, long: 13, zoom: 5},
   styles:  [
   {
@@ -24,9 +26,23 @@ export default Ember.Controller.extend({
   }
 ],
 
-  contentSorted: function () {
-    return this.get('content').sortBy('order');
-  }.property('content.@each'),
+  markers: function () {
+    var currentId = this.get('attrs.currentId');
+
+    return this.get('attrs.sections').map(function (item) {
+      var icon = null;
+      if (item.get('id') === currentId) {
+        icon = '//maps.google.com/mapfiles/ms/icons/blue-dot.png';
+      } else {
+        icon = '//maps.google.com/mapfiles/ms/icons/red-dot.png';
+      }
+      return {title: item.get('title'), lat: item.get('lat'), lng: item.get('long'), icon: icon};
+    });
+  }.property('attrs.sections.[]'),
+
+  sectionsSorted: function () {
+    return this.get('attrs.sections').sortBy('order');
+  }.property('attrs.sections.@each'),
 
   heap: {
     title: "New section",
@@ -37,10 +53,6 @@ export default Ember.Controller.extend({
     createSection: function () {
       var newSection = this.store.createRecord('section', this.get('heap'));
       newSection.save();
-    },
-
-    moveMap: function (section) {
-      this.set('currentSection', section);
     }
   }
 });

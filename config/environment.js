@@ -10,7 +10,7 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com maps.gstatic.com *.googlesyndication.com",
       'frame-src': "'self' *.doubleclick.net *.googlesyndication.com",
       'font-src': "'self' fonts.gstatic.com",
-      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com maps.google.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
     },
     firebase: 'https://malajsie.firebaseio.com/',

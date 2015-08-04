@@ -16,7 +16,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        {{#each contentSorted as |section|}}
+        {{#each sectionsSorted as |section|}}
           {{#link-to 'section' section tagName='li'}}
             <a href="#">
               {{section.abbreviation}}
@@ -29,3 +29,17 @@
 </nav>
 
 {{outlet}}
+
+<div id="map-container">
+  {{google-map
+    lat=4
+    lng=108
+    zoom=6
+    markers=markers
+    gopt_mapTypeControl=false
+    gopt_style=styles
+    gopt_zoomControl=false
+    gopt_backgroundColor='transparent'}}
+</div>
+
+{{log markers}}
