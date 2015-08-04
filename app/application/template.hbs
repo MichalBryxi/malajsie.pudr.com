@@ -8,17 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="...">
-      </a>
+      {{#link-to "index" class="navbar-brand"}}
+        <img alt="Malajská vlajka" src="http://icons.iconarchive.com/icons/custom-icon-design/flag-3/256/Malaysia-Flag-icon.png" />
+      {{/link-to}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        {{#each content as |section|}}
-          {{#link-to 'sections' tagName='li'}}
-            <a>
+        {{#each contentSorted as |section|}}
+          {{#link-to 'section' section tagName='li'}}
+            <a href="#">
               {{section.abbreviation}}
             </a>
           {{/link-to}}
@@ -28,29 +28,4 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4 content">
-
-      {{#each content as |section|}}
-        {{x-section section=section currentSection=currentSection action="moveMap"}}
-      {{/each}}
-
-      <button {{action "createSection"}} class="btn btn-success">Create</button>
-    </div>
-
-    {{outlet}}
-  </div>
-</div>
-
-<div id="map-container">
-  {{google-map
-    lat=currentSection.lat
-    lng=currentSection.long
-    zoom=currentSection.zoom
-    gopt_mapTypeControl=false
-    gopt_style=styles
-    gopt_zoomControl=false
-    gopt_backgroundColor='transparent'}}
-</div>
+{{outlet}}

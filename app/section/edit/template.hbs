@@ -1,4 +1,4 @@
-<div class="col-xs-8 content">
+<div class="col-xs-7 content">
   <div class="form-group">
     <label>Title</label>
     {{input value=content.title class="form-control"}}
@@ -35,5 +35,5 @@
   </div>
 
   <button class="btn btn-primary" {{action "save"}}>Save</button>
-  {{#link-to "sections" class="btn btn-link"}}Back{{/link-to}}
+  {{#link-to "section" content.id class="btn btn-link"}}Back{{/link-to}}
 </div>

@@ -6,8 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('sections', function () {
-    this.route('edit', {path: '/edit/:id'});
+  this.route('section', {path: '/:id'}, function () {
+    this.route('edit');
   });
 });
 

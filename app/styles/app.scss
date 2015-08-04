@@ -1,4 +1,30 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:700|EB+Garamond&subset=latin,latin-ext);
+
+h1, h2, h3, h4, .navbar-nav li {
+  font-family: 'Amatic SC', cursive;
+}
+
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+  color: #444;
+}
+h3 {
+  font-size: 1.7em;
+  color: #777;
+}
+h4 {
+  font-size: 1.5em;
+  color: #aaa;
+}
+
+.content {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3em;
+}
 
 body { padding-top: 70px; }
 
@@ -19,9 +45,8 @@ body { padding-top: 70px; }
 .content {
   z-index: 100;
   position: relative;
-  background-color: rgba(255, 255, 255, .6);
-  border: solid #aaa;
-  border-width: 0 1px;
+  background-color: rgba(255, 255, 255, .7);
+  border: solid 1px #aaa;
   box-shadow: .1em .1em 5em 1em rgba(0, 0, 0, .2);
 }
 
@@ -34,4 +59,14 @@ body { padding-top: 70px; }
 
 .current-section {
   background-color: red;
+}
+
+.navbar-brand img {
+  height: 25px;
+}
+
+.navbar-nav li {
+  border: solid #ddd;
+  border-width: 0 1px 0 0;
+  font-size: 1.5em;
 }
