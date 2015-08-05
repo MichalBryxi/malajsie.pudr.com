@@ -7,9 +7,9 @@
       </h2>
         {{markdown-to-html markdown=attrs.section.body}}
 
-      {{#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
+      {{!#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
         {{!fa-icon "pencil"}}
-      {{/link-to}}
+      {{!/link-to}}
     </div>
 
     {{outlet}}
