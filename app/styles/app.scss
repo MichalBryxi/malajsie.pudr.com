@@ -53,7 +53,7 @@ body { padding-top: 70px; }
 .content {
   @include serif;
   @include front;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, .9);
   border: solid 1px #aaa;
   box-shadow: .1em .1em 5em 1em rgba(0, 0, 0, .2);
 }
