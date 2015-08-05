@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         {{#each sectionsSorted as |section|}}
-          {{#link-to 'section' section.id tagName='li'}}
+          {{#link-to 'section' section tagName='li'}}
             <a href="#">
               {{section.abbreviation}}
             </a>
