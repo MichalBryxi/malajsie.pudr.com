@@ -3,11 +3,11 @@
     <div class="col-xs-4 col-xs-offset-1 content">
       <h2>
         {{fa-icon "circle"}}
-        {{content.title}}
+        {{attrs.section.title}}
       </h2>
-        {{markdown-to-html markdown=content.body}}
+        {{markdown-to-html markdown=attrs.section.body}}
 
-      {{#link-to 'section.edit' content.id class="btn btn-default"}}
+      {{#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
         {{fa-icon "pencil"}}
       {{/link-to}}
     </div>

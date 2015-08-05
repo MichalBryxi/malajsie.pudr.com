@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['section'],
+
   attrs: {},
 
-  currentSection: {lat: 49, long: 13, zoom: 5},
   styles:  [
   {
     stylers: [
@@ -27,7 +28,8 @@ export default Ember.Controller.extend({
 ],
 
   markers: function () {
-    var currentId = this.get('attrs.currentId');
+    var currentId = this.get('controllers.section.attrs.section.id');
+    console.log('recalculating markers for: ', currentId);
 
     return this.get('attrs.sections').map(function (item) {
       var icon = null;
@@ -38,11 +40,11 @@ export default Ember.Controller.extend({
       }
       return {title: item.get('title'), lat: item.get('lat'), lng: item.get('long'), icon: icon};
     });
-  }.property('attrs.sections.[]'),
+  }.property('attrs.sections.[]', 'controllers.section.attrs.section.id'),
 
   sectionsSorted: function () {
     return this.get('attrs.sections').sortBy('order');
-  }.property('attrs.sections.@each'),
+  }.property('attrs.sections.[]'),
 
   heap: {
     title: "New section",

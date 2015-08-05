@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       {{#link-to "index" class="navbar-brand"}}
-        <img alt="Malajská vlajka" src="http://icons.iconarchive.com/icons/custom-icon-design/flag-3/256/Malaysia-Flag-icon.png" />
+        <img alt="Malajská vlajka" src="./icon.png" />
       {{/link-to}}
     </div>
 
@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         {{#each sectionsSorted as |section|}}
-          {{#link-to 'section' section tagName='li'}}
+          {{#link-to 'section' section.id tagName='li'}}
             <a href="#">
               {{section.abbreviation}}
             </a>
@@ -32,14 +32,12 @@
 
 <div id="map-container">
   {{google-map
-    lat=4
-    lng=108
-    zoom=6
+    lat=5
+    lng=100
+    zoom=5
     markers=markers
     gopt_mapTypeControl=false
     gopt_style=styles
     gopt_zoomControl=false
     gopt_backgroundColor='transparent'}}
 </div>
-
-{{log markers}}
