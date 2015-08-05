@@ -29,16 +29,30 @@ export default Ember.Controller.extend({
 
   markers: function () {
     var currentId = this.get('controllers.section.attrs.section.id');
-    console.log('recalculating markers for: ', currentId);
 
     return this.get('attrs.sections').map(function (item) {
-      var icon = null;
+      var icon = '//maps.google.com/mapfiles/ms/icons/red-dot.png',
+          opacity = 0.3,
+          zIndex = 10,
+          isInfoWindowVisible = false;
+
       if (item.get('id') === currentId) {
         icon = '//maps.google.com/mapfiles/ms/icons/blue-dot.png';
-      } else {
-        icon = '//maps.google.com/mapfiles/ms/icons/red-dot.png';
+        opacity = 1;
+        zIndex = 11;
+        isInfoWindowVisible = true;
       }
-      return {title: item.get('title'), lat: item.get('lat'), lng: item.get('long'), icon: icon};
+
+      return {
+        title: item.get('title'),
+        lat: item.get('lat'),
+        lng: item.get('long'),
+        icon: icon,
+        markerHasInfoWindow: true,
+        opacity: opacity,
+        zIndex: zIndex,
+        isInfoWindowVisible: isInfoWindowVisible
+      };
     });
   }.property('attrs.sections.[]', 'controllers.section.attrs.section.id'),
 
