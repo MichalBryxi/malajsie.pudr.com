@@ -4,12 +4,12 @@
       <h2>
         {{!fa-icon "circle"}}
         {{attrs.section.title}}
-      </h2>
-        {{markdown-to-html markdown=attrs.section.body}}
 
-      {{!#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
-        {{!fa-icon "pencil"}}
-      {{!/link-to}}
+        {{#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
+          Edit
+        {{/link-to}}
+      </h2>
+      {{markdown-to-html markdown=attrs.section.body}}
     </div>
 
     {{outlet}}

@@ -1,60 +1,55 @@
 import Ember from 'ember';
+// import makeActive from 'app/utils/make-active';
 
 export default Ember.Controller.extend({
   needs: ['section'],
 
   attrs: {},
-
-  styles:  [
-  {
-    stylers: [
-      { hue: "#00ffe6" },
-      { saturation: -20 }
-    ]
-  },{
-    featureType: "road",
-    elementType: "geometry",
-    stylers: [
-      { lightness: 100 },
-      { visibility: "simplified" }
-    ]
-  },{
-    featureType: "road",
-    elementType: "labels",
-    stylers: [
-      { visibility: "off" }
-    ]
-  }
-],
+  lastMarker: null,
 
   markers: function () {
     var currentId = this.get('controllers.section.attrs.section.id');
+    var self = this;
 
     return this.get('attrs.sections').map(function (item) {
-      var icon = '//maps.google.com/mapfiles/ms/icons/red-dot.png',
-          opacity = 0.3,
-          zIndex = 10,
-          isInfoWindowVisible = false;
+      item.set('lng', item.get('long'));
 
-      if (item.get('id') === currentId) {
-        icon = '//maps.google.com/mapfiles/ms/icons/blue-dot.png';
-        opacity = 1;
-        zIndex = 11;
-        isInfoWindowVisible = true;
-      }
+      self.makeInactive(item);
 
-      return {
-        title: item.get('title'),
-        lat: item.get('lat'),
-        lng: item.get('long'),
-        icon: icon,
-        markerHasInfoWindow: true,
-        opacity: opacity,
-        zIndex: zIndex,
-        isInfoWindowVisible: isInfoWindowVisible
-      };
+      return item;
     });
-  }.property('attrs.sections.[]', 'controllers.section.attrs.section.id'),
+  }.property('attrs.sections.[]'),
+
+  changeActiveMarker: function () {
+    var currentId = this.get('controllers.section.attrs.section.id'),
+        lastMarker = this.get('lastMarker'),
+        currentMarker = this.get('markers').findBy('id', currentId);
+
+    if ( lastMarker ) {
+      this.makeInactive(lastMarker);
+    }
+
+    this.set('lastMarker', currentMarker);
+    this.makeActive(currentMarker);
+  }.observes('markers.[]', 'controllers.section.attrs.section.id'),
+
+  makeInactive: function (marker) {
+    marker.setProperties({
+      icon: '//maps.google.com/mapfiles/ms/icons/red-dot.png',
+      opacity: 0.3,
+      zIndex: 10,
+      isInfoWindowVisible: false
+    });
+  },
+
+  makeActive: function (marker) {
+    marker.setProperties({
+      icon: '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
+      opacity: 1,
+      zIndex: 11,
+      isInfoWindowVisible: true
+    });
+  },
 
   sectionsSorted: function () {
     return this.get('attrs.sections').sortBy('order');
