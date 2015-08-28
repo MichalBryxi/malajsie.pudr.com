@@ -2,12 +2,11 @@
   <div class="row">
     <div class="col-xs-offset-1 col-xs-6 col-md-4 content">
       <h2>
-        {{!fa-icon "circle"}}
         {{attrs.section.title}}
 
-        {{#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
-          Edit
-        {{/link-to}}
+        {{!#link-to 'section.edit' attrs.section.id class="btn btn-default"}}
+          <!-- Edit -->
+        {{!/link-to}}
       </h2>
       {{markdown-to-html markdown=attrs.section.body}}
     </div>

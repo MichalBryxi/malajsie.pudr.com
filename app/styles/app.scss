@@ -34,8 +34,21 @@ h4 {
   color: #aaa;
 }
 
-body { 
+body {
   padding-top: 70px;
+}
+
+.prices {
+  @extend .table;
+  @extend .table-condensed;
+
+  tr {
+    td:nth-child(2), td:nth-child(3) {
+      white-space: nowrap;
+      text-align: right;
+      padding-left: 1em;
+    }
+  }
 }
 
 #map-container {
